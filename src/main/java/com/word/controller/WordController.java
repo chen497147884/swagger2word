@@ -29,7 +29,7 @@ public class WordController {
         return "word";
     }
     @RequestMapping("/getIstarWord")
-    public String getIstarJson(Model model, @RequestParam String url){
+    public String getIstarJson(Model model, @RequestParam("mySwaggerUrl") String url){
         try {
             url = URLDecoder.decode(url,"UTF-8");
         } catch (UnsupportedEncodingException e) {
