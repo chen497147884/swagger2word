@@ -10,4 +10,6 @@ import java.util.List;
 public interface WordService {
 
     List<Table> tableList();
+
+    List<Table> tableList(String url);
 }

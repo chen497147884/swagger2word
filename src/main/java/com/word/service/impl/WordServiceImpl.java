@@ -32,7 +32,16 @@ public class WordServiceImpl implements WordService {
 
     @Override
     public List<Table> tableList() {
-        String json = restTemplate.getForObject(swaggerUrl, String.class);
+        return getTableList(swaggerUrl);
+    }
+
+    @Override
+    public List<Table> tableList(String url) {
+        return getTableList(url);
+    }
+
+    public List getTableList(String mySwaggerUrl){
+        String json = restTemplate.getForObject(mySwaggerUrl, String.class);
 
         Map<String, Object> map = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
@@ -151,7 +160,6 @@ public class WordServiceImpl implements WordService {
         }
         return list;
     }
-
     /**
      * 重新构建url
      *
