@@ -75,7 +75,7 @@ public class WordServiceImpl implements WordService {
                 String requestType = "";
                 String url; // 请求路径
                 String title; // 大标题（类说明）
-                String tag; // 小标题 （方法说明）
+                String tag = ""; // 小标题 （方法说明）
                 String description; //接口描述
 
                 Map.Entry<String, LinkedHashMap> path = it.next();
@@ -107,6 +107,9 @@ public class WordServiceImpl implements WordService {
                 }
 
                 tag = String.valueOf(content.get("summary"));
+                if(StringUtils.isBlank(description) || "null".equals(description)){
+                    description = tag;
+                }
                 //请求体
                 List parameters = (ArrayList) content.get("parameters");
                 if (parameters != null && parameters.size() > 0) {
